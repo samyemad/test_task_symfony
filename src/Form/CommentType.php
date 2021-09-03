@@ -25,7 +25,7 @@ class CommentType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => Comment::class,
-            'validation_groups' => ['create']
+            'validation_groups' => ['details']
         ));
     }
 }
