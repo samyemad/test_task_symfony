@@ -1,0 +1,37 @@
+App\Entity\Client:
+    type: entity
+    table: client
+    repository: App\Repository\ClientRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        email:
+            type: string
+            length: 255
+            unique: true
+        apiToken:
+            type: string
+            unique: true
+            nullable: true
+        roles:
+            type: json
+            length: 255
+            nullable: true
+        password:
+            type: string
+            length: 255
+            nullable: true
+    oneToMany:
+        comments:
+            targetEntity: App\Entity\Client
+            mappedBy: client
+            cascade: [ "persist" ]
+        articles:
+            targetEntity: App\Entity\Client
+            mappedBy: client
+            cascade: [ "persist" ]
+    lifecycleCallbacks: {  }

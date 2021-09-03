@@ -1,0 +1,39 @@
+App\Entity\Blog\Comment:
+    type: entity
+    table: comments
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        urlLink:
+            type: string
+            length: 255
+            nullable: true
+        email:
+            tyoe: string
+            length: 255
+            nullable: false
+        description:
+            type: string
+            length: 255
+            nullable: true
+    manyToOne:
+        client:
+            targetEntity: App\Entity\Client
+            inversedBy: comments
+            joinColumn:
+                name: client_id
+                referencedColumnName: id
+        article:
+            targetEntity: App\Entity\Blog\Article
+            inversedBy: articles
+            joinColumn:
+                name: article_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

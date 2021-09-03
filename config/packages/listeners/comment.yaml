@@ -1,0 +1,7 @@
+services:
+    app.listener.comment.inserted:
+        class: App\EventListener\CommentInsertedNotifier
+        tags:
+            - { name: kernel.event_listener, event: app.comment.inserted, method: notify }
+        autowire: true
+        public: true

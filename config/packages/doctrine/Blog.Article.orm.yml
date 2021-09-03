@@ -1,0 +1,38 @@
+App\Entity\Blog\Article:
+    type: entity
+    table: articles
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 255
+        linkImage:
+            type: string
+            length: 255
+            nullable: true
+        description:
+            type: string
+            length: 255
+            nullable: true
+        createdAt:
+            column: createdAt
+            type: datetime
+            nullable: true
+    manyToOne:
+        client:
+            targetEntity: App\Entity\Client
+            inversedBy: articles
+            joinColumn:
+                name: client_id
+                referencedColumnName: id
+    oneToMany:
+        comments:
+            targetEntity: App\Entity\Blog\Comment
+            mappedBy: article
+            cascade: [ "persist" ]
+    lifecycleCallbacks: {  }
