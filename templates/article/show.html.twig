@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create Article !{% endblock %}
+
+{% block body %}
+
+{#    {% if error %}#}
+{#        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>#}
+{#    {% endif %}#}
+
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+<br/>
+
+    <div class="form-control">
+        <h5>Title: {{  article.title }}</h5>
+
+<br/>
+    <div class="form-control">
+        <h5>Description: {{  article.description }}</h5>
+<br/>
+    <div class="form-control">
+        <h5>Description: {{  article.linkImage }}</h5>
+    </div>
+
+    <div class="form-control" >
+        <h5>Author Name: <a href="">{{  article.client.email }}</a></h5>
+    </div>
+
+
+
+{% endblock %}
