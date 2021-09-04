@@ -25,7 +25,6 @@ class ExceptionListener {
             $event->setResponse(new JsonResponse($response,$code));
             return;
         }
-        // Send a not found in JSON format
-        $event->setResponse(new JsonResponse('404 found'));
+        $event->setResponse(new JsonResponse('Some Error Found we fix now this error please keep calm',404));
     }
 }

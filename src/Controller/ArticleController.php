@@ -13,7 +13,7 @@ use App\Entity\Blog\Article;
 use App\Form\ArticleType;
 use App\Event\ArticleInsertedEvent;
 
-class AccountController extends AbstractController
+class ArticleController extends AbstractController
 {
     /**
      * @Route("/user/article/create", name="admin_article_create")
