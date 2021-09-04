@@ -37,7 +37,8 @@ services:
 
     App\Service\Interfaces\GenerateEventInterface: '@App\Service\GenerateEvent'
 
-    App\Service\Results\ResultService: ~
+    App\Service\Results\ResultService:
+        public: true
 
     App\Service\Interfaces\ResultServiceInterface: '@App\Service\Results\ResultService'
     App\Service\Serializer\SerializerManager:

@@ -26,8 +26,10 @@ class ResultService implements ResultServiceInterface
 
         $repo = $this->em->getRepository($class);
 
-        $page = $request->query->get('page', 1);
+        $page =($request == null) ? 1 :$request->query->get('page', 1);
+
         $allCount=($type == 'All') ? $repo->findAll() : $repo->findBy($options);
+
         $pagesCount = ceil(count($allCount) / self::LIMIT);
 
         $pages = range(1, $pagesCount);

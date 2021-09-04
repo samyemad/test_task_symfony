@@ -19,6 +19,7 @@ class TokenAuthenticator extends AbstractGuardAuthenticator
 
     public function __construct(EntityManagerInterface $em)
     {
+
         $this->em = $em;
     }
 
@@ -29,7 +30,7 @@ class TokenAuthenticator extends AbstractGuardAuthenticator
      */
     public function supports(Request $request): bool
     {
-        return $request->headers->has('token');
+        return true;
     }
 
     /**
@@ -38,7 +39,8 @@ class TokenAuthenticator extends AbstractGuardAuthenticator
      */
     public function getCredentials(Request $request)
     {
-        return $request->headers->get('token');
+        $token=($request->headers->has('token')) ? $request->headers->get('token') : false;
+        return $token;
     }
 
     public function getUser($credentials, UserProviderInterface $userProvider): ?UserInterface

@@ -17,7 +17,7 @@ use Doctrine\Common\Annotations\AnnotationReader;
 class SerializerManager
 {
 
-    public function generate($param): Serializer
+    public function generate(): Serializer
     {
         $defaultContext = [
             AbstractNormalizer::CIRCULAR_REFERENCE_HANDLER => function ($object, $format, $context) {
@@ -25,14 +25,15 @@ class SerializerManager
             },
         ];
         $encoders = [new JsonEncoder()];
-       // $classMetadataFactory = new ClassMetadataFactory(new YamlFileLoader('../config/packages/serializer/'.$param.'.yaml'));
+
         $classMetadataFactory = new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()));
-        //$classMetadataFactory = new ClassMetadataFactory(new YamlFileLoader('../config/packages/serializer/'.$param.'.yaml'));
+
         $metadataAwareNameConverter = new MetadataAwareNameConverter($classMetadataFactory);
+
         $normalizers = [new DateTimeNormalizer(),new ObjectNormalizer($classMetadataFactory,$metadataAwareNameConverter, null, null, null, null, $defaultContext)];
 
-        // $serializer = new Serializer($normalizers, $encoders);
         $serializer = new Serializer($normalizers);
+
         return $serializer;
     }
 }
