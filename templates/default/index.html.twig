@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DefaultController!{% endblock %}
+{% block title %}Show Articles!{% endblock %}
 
 {% block body %}
 <style>
@@ -26,15 +26,9 @@
 
     <ul>
         {%  for page in pages %}
-      <a href="{{ path('homepage') }}?page={{ page }}">{{ page }}</a>
+      <a href="{{ app.request.pathinfo }}?page={{ page }}">{{ page }}</a>
         {%  endfor %}
     </ul>
     <h5>page count: {{  pagesCount }}</h5>
-
-{#    This friendly message is coming from:#}
-{#    <ul>#}
-{#        <li>Your controller at <code><a href="{{ '/var/www/html/test_task_final/src/Controller/DefaultController.php'|file_link(0) }}">src/Controller/DefaultController.php</a></code></li>#}
-{#        <li>Your template at <code><a href="{{ '/var/www/html/test_task_final/templates/default/index.html.twig'|file_link(0) }}">templates/default/index.html.twig</a></code></li>#}
-{#    </ul>#}
 </div>
 {% endblock %}

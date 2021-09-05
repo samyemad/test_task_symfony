@@ -4,20 +4,12 @@
 
 {% block body %}
 
-
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
-    {% endif %}
-<br/>
-
     <div class="form-control">
         <h5>Title: {{  article.title }}</h5>
 
 <br/>
     <div class="form-control">
-        <h5>Description: {{  article.description }}</h5>
+        <h5>Description: {{ article.description|length > 1000 ? article.description|slice(0, 1000) ~ '...' : article.description  }}</h5>
 <br/>
     <div class="form-control">
         <h5>Image: <img src="{{  article.linkImage }}"/></h5>
@@ -32,13 +24,16 @@
             </div>
             <hr/>
         {% endfor  %}
-
+        {% if article.client is not null %}
     <div class="form-control" >
         <h5>Author Name: <a href="">{{  article.client.email }}</a></h5>
     </div>
+        {%  endif %}
 
         <hr/>
         <hr/>
+        {% if app.user %}
+        <div>
         <h5>comment form </h5>
 
         {{ form_start(form) }}
@@ -89,7 +84,7 @@
 
 
         {{ form_end(form) }}
-
-
+        </div>
+        {% endif %}
 
 {% endblock %}

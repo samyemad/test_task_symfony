@@ -34,8 +34,13 @@ services:
         resource: '../src/Controller/'
         tags: ['controller.service_arguments']
     App\Service\GenerateEvent: ~
+
     App\Service\Interfaces\GenerateEventInterface: '@App\Service\GenerateEvent'
 
+    App\Service\Results\ResultService:
+        public: true
+
+    App\Service\Interfaces\ResultServiceInterface: '@App\Service\Results\ResultService'
     App\Service\Serializer\SerializerManager:
         tags:
             - { name: 'app.handler.serializer', key: 'handler_serializer' }

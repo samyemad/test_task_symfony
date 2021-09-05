@@ -27,6 +27,7 @@ class Article implements EntityInterface
     private $client;
     /**
      * @Assert\NotBlank(groups={"create"})
+     * @Groups({"group1"})
      */
     private $description;
 
