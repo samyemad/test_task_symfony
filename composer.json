@@ -1,6 +1,14 @@
 {
-    "type": "project",
+    "name": "symfony/rand-library",
+    "description": "generate rand login and register in symfony",
+    "type": "library",
     "license": "proprietary",
+    "authors": [
+       {
+      "name": "Samy Emad",
+      "email": "samyemad4@gmail.com"
+       }
+     ],
     "require": {
         "php": ">=7.1.3",
         "ext-ctype": "*",
