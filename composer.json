@@ -1,5 +1,5 @@
 {
-    "name": "symfony/rand-library",
+    "name": "symsamy/rand-library",
     "description": "generate rand login and register in symfony",
     "type": "library",
     "license": "proprietary",
